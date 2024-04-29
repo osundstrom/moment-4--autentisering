@@ -35,6 +35,21 @@ router.post("/register", async (request, response) => {
             return response.status(400).json({error: "Password has to be atleast 8 characters"})
         }
 
+
+        
+
+        if (!/[A-ZÅÄÖ]/.test(password)) {
+            return response.status(400).json({ error: "Password must contain one uppercase letter" });
+        }
+        
+        if (!/[1-9]/.test(password)) {
+            return response.status(400).json({ error: "Password must contain one number" });
+        }
+        
+        if (!/[@]/.test(email)) {
+            return response.status(400).json({ error: "email is not correct" });
+        }
+
         
         //Spara
         const user = new User({username, password, email});
@@ -56,9 +71,20 @@ router.post("/login", async (request, response) => {
             return response.status(400).json({error: "Username has to be 7-20 characters"})
         }
 
+
+
         if (password.length < 8 ) { //Längd lösenord
             return response.status(400).json({error: "Password has to be atleast 8 characters"})
         }
+
+        if (!/[A-ZÅÄÖ]/.test(password)) {
+            return response.status(400).json({ error: "Password must contain one uppercase letter" });
+        }
+        
+        if (!/[1-9]/.test(password)) {
+            return response.status(400).json({ error: "Password must contain one number" });
+        }
+        
 
         //Validering inlogg
 
