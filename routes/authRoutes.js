@@ -42,7 +42,7 @@ router.post("/register", async (request, response) => {
             return response.status(400).json({ error: "Password must contain one uppercase letter" });
         }
         
-        if (!/[1-9]/.test(password)) {
+        if (!/[0-9]/.test(password)) {
             return response.status(400).json({ error: "Password must contain one number" });
         }
         
@@ -61,7 +61,7 @@ router.post("/register", async (request, response) => {
     }
 });
 
-
+//login
 router.post("/login", async (request, response) => {
     try {
         const {username, password} = request.body;
@@ -81,7 +81,7 @@ router.post("/login", async (request, response) => {
             return response.status(400).json({ error: "Password must contain one uppercase letter" });
         }
         
-        if (!/[1-9]/.test(password)) {
+        if (!/[0-9]/.test(password)) {
             return response.status(400).json({ error: "Password must contain one number" });
         }
         
