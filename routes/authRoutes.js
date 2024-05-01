@@ -30,7 +30,18 @@ router.post("/register", async (request, response) => {
     try {
         const {username, password, email, account_created} = request.body;
 
+
+
         //Validering
+
+        const existingUser = await User.findOne({ username ,  email });
+        if (existingUser) {
+            return response.status(400).json({ error: "Username or email already exists" });
+        }
+        
+
+
+
         if (username.length < 6 || username.length > 20) {
             return response.status(400).json({error: "Username has to be 7-20 characters"})
         }
