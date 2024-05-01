@@ -8,6 +8,7 @@ require("dotenv").config(); //.env
 
 
 
+
 const User = require("./models/User"); //User från models/User
 
 
@@ -107,12 +108,10 @@ router.post("/login", async (request, response) => {
             //jwt
             const payloadUser = {username: username};
             const token = jwt.sign(payloadUser, process.env.JWT_SECRET_KEY, {expiresIn: "1h"})
-
             const answear = {
                 message: "Logged in",
                 token: token
             }
-
             response.status(200).json({answear})
         }
 

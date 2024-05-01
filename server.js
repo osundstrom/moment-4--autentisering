@@ -22,8 +22,9 @@ require("dotenv").config();
 app.use("/api", authRoutes);
 
 //skyddad
-app.get("/api/startpage", validateToken, (request, response) => {
+app.get("/api/secret", validateToken, (request, response) => {
     response.json({message: "skyddad"});
+    console.log("skyddad");
 })
 
 //Funtkion för token

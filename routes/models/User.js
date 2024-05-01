@@ -2,6 +2,7 @@
 const mongoose = require("mongoose"); //Mongoose
 const bcrypt = require("bcrypt"); //bcrypt
 
+
 //schema för användare
  const userSchema = new mongoose.Schema ({
     username: {
