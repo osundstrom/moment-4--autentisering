@@ -22,7 +22,7 @@ require("dotenv").config();
 app.use("/api", authRoutes);
 
 //skyddad
-app.get("/secret", validateToken, (request, response) => {
+app.get("/api/secret", validateToken, (request, response) => {
     response.json({message: "skyddad"});
     console.log("skyddad");
 })
